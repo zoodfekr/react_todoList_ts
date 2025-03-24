@@ -24,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle, drawe
                     "& .MuiDrawer-paper": { width: drawerWidth },
                 }}
             >
-                sidebar content
+              محتوای ساید بار
             </Drawer>
 
             <Drawer
@@ -35,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle, drawe
                 }}
                 open
             >
-                sidebar content
+              محتوای ساید بار
             </Drawer>
         </>
     )

@@ -1,1 +1,6 @@
 @import "tailwindcss";
+@import './fontiran.css';
+
+* {
+    font-family: IRANSans;
+}
