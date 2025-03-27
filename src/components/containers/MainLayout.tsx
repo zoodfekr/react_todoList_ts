@@ -1,19 +1,21 @@
 import { Box, CssBaseline } from "@mui/material";
 
-import { useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import Appbar from "../appbar/Appbar";
 import { Outlet } from "react-router"
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/reduxHooks";
+import { setShowSidebar } from "../../redux/reducers/show_sidebar";
 
 
 const drawerWidth = 250;
 
 const MainLayout: React.FC = () => {
 
+    const dispatch = useAppDispatch();
 
-    const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+    const { show } = useAppSelector(state => state.show_sidebar)
+    const handleDrawerToggle = () => dispatch(setShowSidebar(!show));
 
-    const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
     return (
         <Box sx={{ display: "flex" }}>
@@ -25,7 +27,6 @@ const MainLayout: React.FC = () => {
             />
 
             <Sidebar
-                mobileOpen={mobileOpen}
                 drawerWidth={drawerWidth}
                 handleDrawerToggle={handleDrawerToggle}
             />

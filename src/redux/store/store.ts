@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-=import show_sidebar from '../reducers/show_sidebar'
+import show_sidebar from '../reducers/show_sidebar'
 import { apiSlice } from '../../api/apiSlice'
 
 
@@ -12,3 +12,9 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(apiSlice.middleware)
 })
+
+
+// 🔹 تعریف نوع `RootState`
+export type RootState = ReturnType<typeof store.getState>;
+// 🔹 تعریف نوع `AppDispatch`
+export type AppDispatch = typeof store.dispatch;

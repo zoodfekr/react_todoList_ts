@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { server_url } from '../app_setting'
 import axios from 'axios'
 
 const uploadFile = async props => {
@@ -14,7 +13,7 @@ const uploadFile = async props => {
   }
 
   const method = 'POST'
-  const baseUrl = server_url
+  const baseUrl = 'httptest'
 
   const url = `${baseUrl}${status === 'audio' ? 'api/audio/' : 'api/text/'}`
 
@@ -61,7 +60,7 @@ export default uploadFile
 
 export const apiSlice = createApi({
   reducerPath: 'api', //state.api
-  baseQuery: fetchBaseQuery({ baseUrl: server_url }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'np' }),
 
   tagTypes: [
     'LANG',
@@ -479,10 +478,10 @@ export const apiSlice = createApi({
           }
         }
       },
-      invalidatesTags: ['TRANSLATEALL' , 'TRANSLATE']
+      invalidatesTags: ['TRANSLATEALL', 'TRANSLATE']
     }),
 
-    
+
     get_report_single: builder.query({
       query: props => {
         const method = 'GET'
