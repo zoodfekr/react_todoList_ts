@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import show_sidebar from '../reducers/show_sidebar'
 import { apiSlice } from '../../api/apiSlice'
+import show_sidebar from '../reducers/show_sidebar'
+import theme_slice from '../reducers/theme'
 
 
 export const store = configureStore({
   reducer: {
     show_sidebar,
+    theme_slice,
     [apiSlice.reducerPath]: apiSlice.reducer
   },
   middleware: getDefaultMiddleware =>
