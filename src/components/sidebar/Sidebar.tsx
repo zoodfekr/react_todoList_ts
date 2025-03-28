@@ -1,5 +1,6 @@
-import { Drawer } from "@mui/material";
+import { Box, Drawer } from "@mui/material";
 import { useAppSelector } from "../../redux/hooks/reduxHooks";
+import SidebarItems from "./SidebarItems";
 
 
 
@@ -17,6 +18,8 @@ const Sidebar: React.FC<SidebarProps> = ({ handleDrawerToggle, drawerWidth }) =>
 
     return (
         <>
+            <div style={{ width: `${drawerWidth}px` }}>
+
             <Drawer
                 variant="temporary"
                 open={show}
@@ -24,22 +27,27 @@ const Sidebar: React.FC<SidebarProps> = ({ handleDrawerToggle, drawerWidth }) =>
                 ModalProps={{ keepMounted: true }}
                 sx={{
                     display: { xs: "block", sm: "none" },
-                    "& .MuiDrawer-paper": { width: drawerWidth },
+                    "& .MuiDrawer-paper": { width: `${drawerWidth}px` },
                 }}
             >
-                محتوای ساید بار
+                <SidebarItems />
             </Drawer>
 
-            <Drawer
+
+            {/* <SidebarItems /> */}
+
+
+            {/* <Drawer
                 variant="permanent"
                 sx={{
                     display: { xs: "none", sm: "block" },
-                    "& .MuiDrawer-paper": { width: drawerWidth },
+                    "& .MuiDrawer-paper": { width: `${drawerWidth}px` },
                 }}
                 open
             >
-                محتوای ساید بار
-            </Drawer>
+                <SidebarItems />
+            </Drawer> */}
+            </div>
         </>
     )
 };

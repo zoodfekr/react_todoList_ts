@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 
 
 import '../public/style/index.css'
-import App from './App.tsx'
 import { store } from './redux/store/store.ts'
 import { ThemeProvider } from '@mui/material'
 import { useAppSelector } from './redux/hooks/reduxHooks.ts'
@@ -13,6 +12,8 @@ import { CacheProvider } from '@emotion/react'
 import { prefixer } from 'stylis'
 import rtlPlugin from 'stylis-plugin-rtl'
 import createCache from '@emotion/cache'
+import { BrowserRouter } from 'react-router'
+import AppRoutes from './routes/routes.tsx'
 
 const cacheRTL = createCache({
   key: 'muirtl',
@@ -29,7 +30,10 @@ const Root = () => {
   return (
     <ThemeProvider theme={currentTheme}>
       <CacheProvider value={cacheRTL}>
-        <App />
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+        {/* <App /> */}
       </CacheProvider>
     </ThemeProvider>
   )
