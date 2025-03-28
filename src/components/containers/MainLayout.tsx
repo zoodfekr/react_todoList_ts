@@ -1,10 +1,11 @@
-import { Box, CssBaseline } from "@mui/material";
+import { Box, CssBaseline, Paper } from "@mui/material";
 
 import Sidebar from "../sidebar/Sidebar";
 import Appbar from "../appbar/Appbar";
 import { Outlet } from "react-router"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/reduxHooks";
-import { setShowSidebar } from "../../redux/reducers/show_sidebar";
+import { setDrawerSidebar } from "../../redux/reducers/show_sidebar";
+import Drawer_Sidebar from "../sidebar/Drawer_Sidebar";
 
 
 const drawerWidth = 250;
@@ -13,53 +14,54 @@ const MainLayout: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
-    const { show } = useAppSelector(state => state.show_sidebar)
-    const handleDrawerToggle = () => dispatch(setShowSidebar(!show));
+    const { drawer, closed } = useAppSelector(state => state.show_sidebar)
+    const handleDrawerToggle = () => dispatch(setDrawerSidebar(!drawer));
 
 
     return (
-        <Box sx={{
-            display: "flex",
-            position: "relative"
-        }}>
-            <CssBaseline />
 
 
 
+        <Box className="flex flex-row h-screen overflow-hidden ">
 
-            <div className="border grow">
-                <Appbar
-                    drawerWidth={drawerWidth}
-                    handleDrawerToggle={handleDrawerToggle}
-                />
 
-                <Box
-                    className={`border border-red-500 h-full p-2 mt-14  overflow-auto grow`}
-                    sx={{
-                        height: "calc(100vh - 58px)",
-                        // flexGrow: 1, // این باعث می‌شود فضای اصلی در دسترس قرار گیرد
-                        // marginLeft: show ? drawerWidth : 0, // اگر Sidebar باز باشد، فضا را جابجا می‌کند
-                        // transition: "margin-left 0.3s", // افزودن انیمیشن برای حرکت ملایم
-                        width: { sm: 1, md: `calc(100vw - ${drawerWidth}px)` }
-                    }}
+
+            <div className="grow relative h-screen" style={{ width: closed ? 'w-full' : 'calc(100vw-340px)' }}>
+                {/* اپ بار در صفحات */}
+                <Appbar handleDrawerToggle={handleDrawerToggle} />
+
+                {/* محتوا */}
+                <div
+                    className={`overflow-x-hidden overflow-y-auto box-border transition-all 
+            h-[calc(100vh-40px)] relative 
+            ${closed ? "w-screen" : "md:w-[calc(100vw-250px)]"}`
+                    }
                 >
-                    <Outlet />
-                </Box>
+                    <Paper className="w-full h-full" sx={{ borderRadius: "0px" }} elevation={3}>
+                        <div className="bg-stone-300/50 w-full h-full">
 
-            </div>
+                            <Outlet />
+                        </div>
+                    </Paper>
+                </div>
+            </div >
+
+            {/* ساید بار */}
 
 
-            {/* <div style={{width:`${drawerWidth}px`}}> */}
-            <Sidebar
-                drawerWidth={drawerWidth}
-                handleDrawerToggle={handleDrawerToggle}
-            />
-            {/* </div> */}
 
-        </Box>
+            < Sidebar drawerWidth={drawerWidth} />
+
+            {/* ساید باز متحرک */}
+            < Drawer_Sidebar />
+
+
+        </Box >
+
+
+
     );
 };
 
 export default MainLayout;
-
 

@@ -17,7 +17,7 @@ const sidebarList: SidebarItem[] = [
 
 const SidebarItems = () => {
     return (
-        <div className="flex flex-col p-2 h-full overflow-x-hidden overflow-y-auto">
+        <div className="flex flex-col p-2 h-full overflow-x-hidden overflow-y-auto bg-stone-600/50">
             <div className="p-1 flex items-center justify-end gap-2">
                 <p>مدیریت وظایف</p>
                 <img src={logoImg} width={47} alt="Logo" />

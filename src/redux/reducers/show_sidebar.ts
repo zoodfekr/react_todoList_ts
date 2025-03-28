@@ -1,18 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type ShowSidebarState = { show: boolean };
+type ShowSidebarState = { drawer: boolean, closed: boolean };
 
-const initialState: ShowSidebarState = { show: false };
+const initialState: ShowSidebarState = { drawer: false, closed: false };
 
 export const showSidebarSlice = createSlice({
     name: "show_sidebar",
     initialState,
     reducers: {
-        setShowSidebar: (state, action: PayloadAction<boolean>) => {
-            state.show = action.payload;
-        }
+        setDrawerSidebar: (state, action: PayloadAction<boolean>) => {
+            state.drawer = action.payload;
+        },
+        setCloseSidebar: (state, action: PayloadAction<boolean>) => {
+            state.closed = action.payload;
+        },
+
     }
 });
 
-export const { setShowSidebar } = showSidebarSlice.actions;
+export const { setDrawerSidebar, setCloseSidebar } = showSidebarSlice.actions;
 export default showSidebarSlice.reducer;

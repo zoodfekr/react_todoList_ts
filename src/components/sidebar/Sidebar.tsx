@@ -1,53 +1,43 @@
-import { Box, Drawer } from "@mui/material";
+import { Paper } from "@mui/material";
 import { useAppSelector } from "../../redux/hooks/reduxHooks";
 import SidebarItems from "./SidebarItems";
 
 
 
 type SidebarProps = {
-    handleDrawerToggle: () => void;
     drawerWidth: number | string;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ handleDrawerToggle, drawerWidth }) => {
+const Sidebar: React.FC<SidebarProps> = ({ drawerWidth }) => {
 
 
-    const { show } = useAppSelector(state => state.show_sidebar)
+    const { closed } = useAppSelector(state => state.show_sidebar)
 
 
 
     return (
         <>
-            <div style={{ width: `${drawerWidth}px` }}>
 
-            <Drawer
-                variant="temporary"
-                open={show}
-                onClose={handleDrawerToggle}
-                ModalProps={{ keepMounted: true }}
-                sx={{
-                    display: { xs: "block", sm: "none" },
-                    "& .MuiDrawer-paper": { width: `${drawerWidth}px` },
-                }}
+            <div
+                className=" hidden md:block relative overflow-x-hidden
+                 transition-all duration-500"
+                style={{ width: closed ? "0px" : `${drawerWidth}px` }}
             >
-                <SidebarItems />
-            </Drawer>
+                <div
+                    className="w-full h-full transition-all duration-500 p-0"
+                    style={{ width: closed ? "0px" : `${drawerWidth}px`, overflow: 'hidden' }}
+                >
 
 
-            {/* <SidebarItems /> */}
-
-
-            {/* <Drawer
-                variant="permanent"
-                sx={{
-                    display: { xs: "none", sm: "block" },
-                    "& .MuiDrawer-paper": { width: `${drawerWidth}px` },
-                }}
-                open
-            >
-                <SidebarItems />
-            </Drawer> */}
+                    <Paper className="h-full w-full" sx={{
+                        width: 1, borderRadius: 0,
+// 
+                    }}>
+                        <SidebarItems />
+                    </Paper>
+                </div>
             </div>
+
         </>
     )
 };

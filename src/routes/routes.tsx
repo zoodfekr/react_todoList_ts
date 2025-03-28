@@ -3,12 +3,13 @@ import Dashboard from "../components/pages/dashboard/Dashboard";
 import Category from "../components/pages/category/Category";
 import Tasks from "../components/pages/tasks/Tasks";
 import MainLayout from "../components/containers/MainLayout";
+import { Login } from "../components/pages/login/Login";
 
 const AppRoutes = () => {
     return (
         <Routes>
             {/* مسیر صفحه لاگین (بدون Layout) */}
-            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<Login />} />
 
             {/* مسیرهای داخل داشبورد (با Layout) */}
             <Route path="/home" element={<MainLayout />}>

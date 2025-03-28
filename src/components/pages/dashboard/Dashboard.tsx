@@ -1,9 +1,13 @@
 
-type Props = {}
 
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
     return (
-        <div >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, incidunt. Itaque, nobis id repudiandae voluptas molestias quasi aspernatur corrupti tempora totam harum quis, mollitia ratione quibusdam, provident ducimus dolores suscipit.</div>
+        <div className="flex grow overflow-auto  p-2 ">
+
+            <div className="w-full">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates fuga unde dolorum laudantium dolores ducimus quae quasi fugit eum recusandae enim eveniet, quam quo officiis nihil sit maiores magni placeat?
+            </div>
+        </div >
     )
 }
 
