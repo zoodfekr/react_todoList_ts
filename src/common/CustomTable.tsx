@@ -7,48 +7,41 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-type table_header_propType = {
-    id: string,
-    title: string,
-    description: string,
-    icon: string,
-    userId: string,
-    createdAt: string,
+type CustomTableProps = {
+    data: {
+        id: number;
+        name: string;
+        value: boolean | string | number;
+    }[];
 };
 
 
-type table_data_propType = {string => string}[];
+
+export default function CustomTable({ data }: CustomTableProps) {
 
 
-
-
-
-export default function CustomTable() {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                        {data.map(val => {
+                            return (
+                                <TableCell>{val.name}</TableCell>
+                            )
+                        })}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {data.map((val) => (
                         <TableRow
-                            key={row.name}
+                            key={val.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {val.value}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>

@@ -12,6 +12,11 @@ const Category: React.FC = () => {
     if (isLoading) return <p>در حال بارگذاری...</p>;
     if (error) return <p>خطا در دریافت داده‌ها!</p>;
 
+
+    const table_data = [
+        { id: 1, name: "first", value: "ramin" }
+    ]
+
     return (
         <div>
 
@@ -22,7 +27,7 @@ const Category: React.FC = () => {
                 )
             })} */}
 
-            <CustomTable></CustomTable>
+            <CustomTable data={table_data}></CustomTable>
 
         </div>
     )
