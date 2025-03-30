@@ -1,6 +1,10 @@
 
 
 const Dashboard = () => {
+
+    console.log('Dashboard');
+
+
     return (
         <div className="flex grow overflow-auto  p-2 ">
 

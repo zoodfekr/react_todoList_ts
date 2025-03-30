@@ -56,7 +56,7 @@ const Appbar: React.FC<AppbarProps> = ({ handleDrawerToggle }) => {
 
                     <button color="inherit" onClick={handle_close_open_sidebar}
                         className={` hidden md:block transition-all
-                        duration-500 ${closed ? 'rotate-180' : '0'}
+                        duration-500 ${closed ? 'rotate-0' : 'rotate-180'}
                         `}                    >
                         <MenuOpenIcon></MenuOpenIcon>
                     </button>

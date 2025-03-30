@@ -6,6 +6,7 @@ import { Outlet } from "react-router"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/reduxHooks";
 import { setDrawerSidebar } from "../../redux/reducers/show_sidebar";
 import Drawer_Sidebar from "../sidebar/Drawer_Sidebar";
+import { useCallback, useMemo } from "react";
 
 
 const drawerWidth = 250;
@@ -14,8 +15,19 @@ const MainLayout: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
-    const { drawer, closed } = useAppSelector(state => state.show_sidebar)
-    const handleDrawerToggle = () => dispatch(setDrawerSidebar(!drawer));
+    const drawer = useAppSelector(state => state.show_sidebar.drawer);
+    const closed = useAppSelector(state => state.show_sidebar.closed);
+
+    const handleDrawerToggle = useCallback(() => {
+        dispatch(setDrawerSidebar(!drawer));
+    }, [dispatch, drawer]);
+
+    const mainContainerStyle = useMemo(() => ({
+        width: closed ? 'w-full' : 'calc(100vw - 340px)',
+    }), [closed]);
+
+
+    console.log('MainLayout');
 
 
     return (
@@ -26,13 +38,13 @@ const MainLayout: React.FC = () => {
 
 
 
-            <div className="grow relative h-screen" style={{ width: closed ? 'w-full' : 'calc(100vw-340px)' }}>
+            <div className="grow relative h-screen" style={mainContainerStyle}>
                 {/* اپ بار در صفحات */}
                 <Appbar handleDrawerToggle={handleDrawerToggle} />
 
                 {/* محتوا */}
                 <div
-                    className={`overflow-x-hidden overflow-y-auto box-border transition-all 
+                    className={`overflow-x-hidden overflow-y-auto box-border transition-all  duration-500
             h-[calc(100vh-40px)] relative 
             ${closed ? "w-screen" : "md:w-[calc(100vw-250px)]"}`
                     }

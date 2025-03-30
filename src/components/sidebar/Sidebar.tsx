@@ -1,6 +1,7 @@
 import { Paper } from "@mui/material";
 import { useAppSelector } from "../../redux/hooks/reduxHooks";
 import SidebarItems from "./SidebarItems";
+import React from "react";
 
 
 
@@ -11,9 +12,12 @@ type SidebarProps = {
 const Sidebar: React.FC<SidebarProps> = ({ drawerWidth }) => {
 
 
-    const { closed } = useAppSelector(state => state.show_sidebar)
+    // const { closed } = useAppSelector(state => state.show_sidebar)
+
+    const closed = useAppSelector(state => state.show_sidebar.closed);
 
 
+    console.log('Sidebar');
 
     return (
         <>
@@ -31,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ drawerWidth }) => {
 
                     <Paper className="h-full w-full" sx={{
                         width: 1, borderRadius: 0,
-// 
+                        // 
                     }}>
                         <SidebarItems />
                     </Paper>
@@ -41,4 +45,4 @@ const Sidebar: React.FC<SidebarProps> = ({ drawerWidth }) => {
         </>
     )
 };
-export default Sidebar;
+export default React.memo(Sidebar);
