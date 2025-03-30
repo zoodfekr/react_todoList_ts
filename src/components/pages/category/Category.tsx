@@ -18,7 +18,7 @@ const Category: React.FC = () => {
     ]
 
     return (
-        <div>
+        <div className='p-2'>
 
 
             {/* {categories?.map(val => {
