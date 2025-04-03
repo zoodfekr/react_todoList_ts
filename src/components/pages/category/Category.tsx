@@ -5,17 +5,14 @@ import CustomTable from '../../../common/CustomTable';
 const Category: React.FC = () => {
 
 
-    const { data: categories, error, isLoading } = useGetCategoriesQuery();
+    const { data: categories = [], error, isLoading } = useGetCategoriesQuery();
 
-    console.log('Category');
+    console.log('Category', categories);
 
     if (isLoading) return <p>در حال بارگذاری...</p>;
     if (error) return <p>خطا در دریافت داده‌ها!</p>;
 
 
-    const table_data = [
-        { id: 1, name: "first", value: "ramin" }
-    ]
 
     return (
         <div className='p-2'>
@@ -27,7 +24,7 @@ const Category: React.FC = () => {
                 )
             })} */}
 
-            <CustomTable data={table_data}></CustomTable>
+            <CustomTable data={categories}></CustomTable>
 
         </div>
     )
