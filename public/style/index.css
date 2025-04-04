@@ -7,3 +7,9 @@
 }
 
 /* stable version */
+
+
+
+.Toastify__toast-icon .Toastify--animate-icon .Toastify__zoom-enter {
+font-family: "IRANSans" !important;
+}

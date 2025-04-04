@@ -1,4 +1,4 @@
-import { green, grey, purple, red } from '@mui/material/colors';
+import { blue, green, grey, purple, red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
@@ -61,7 +61,7 @@ export const darktheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: purple[500]
+      main: blue[800]
     }
   },
   typography: {
